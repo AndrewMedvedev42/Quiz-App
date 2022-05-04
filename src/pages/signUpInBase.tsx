@@ -2,7 +2,12 @@ import { Layout } from 'antd';
 
 const { Content } = Layout;
 
-export function SignUpInBasePage(props:any): JSX.Element {
+interface ISignUpInBase {
+    title_text:string,
+    component:JSX.Element
+}
+
+export const SignUpInBasePage = ({title_text, component}:ISignUpInBase):JSX.Element => {
     return (
         <Content
             style={{
@@ -11,8 +16,8 @@ export function SignUpInBasePage(props:any): JSX.Element {
                 minHeight: 280,
             }}
         >
-            <h1>{props.title_text}</h1>
-            {props.component}
+            <h1>{title_text}</h1>
+            {component}
         </Content>
     )
 }
