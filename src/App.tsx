@@ -1,6 +1,16 @@
+import {BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { SignUpInBasePage } from "./pages/signUpInBase";
+import { SignUpForm } from "./components/signUpForm";
+import { SignInForm } from "./components/signInForm";
+
 function App(): JSX.Element {
   return (
-      <div>hello</div>
+    <Router>
+      <Routes>
+        <Route path="/signin" element={<SignUpInBasePage title_text="Sign In" component={<SignInForm/>}/>}/>
+        <Route path="/signup" element={<SignUpInBasePage title_text="Sign Up" component={<SignUpForm/>}/>}/>
+      </Routes>
+    </Router>
   );
 }
 
