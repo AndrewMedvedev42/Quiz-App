@@ -1,6 +1,6 @@
 import { Form, Input, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { SignUpWithSocialMedia } from './signUpWithSocialMedia';
+import GoogleSignIn from "../../google";
 
 export const SignUpForm = () => {
     const [form] = Form.useForm();
@@ -44,7 +44,7 @@ export const SignUpForm = () => {
                 <Input.Password />
             </Form.Item>
             <Form.Item
-                name="password"
+                name="repeatpassword"
                 label='Repeat password'
                 rules={[
                     { required: true },
@@ -62,7 +62,7 @@ export const SignUpForm = () => {
                 </Button>
             </Form.Item>
         </Form>
-        <SignUpWithSocialMedia text="Sign Up with Google" />
+        <GoogleSignIn text="Sign Up with Google" />
         <NavLink to="/signin">
             <Button type="link" htmlType="button">
                 Sign In

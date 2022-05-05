@@ -1,6 +1,6 @@
 import { Form, Input, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { SignUpWithSocialMedia } from './signInWithSocialMedia';
+import GoogleSignIn from "../../google";
 
 export const SignInForm = () => {
     const [form] = Form.useForm();
@@ -49,7 +49,7 @@ export const SignInForm = () => {
                 </Button>
             </Form.Item>
         </Form>
-        <SignUpWithSocialMedia text="Sign In with Google" />
+        <GoogleSignIn text="Sign In with Google" />
         <NavLink to="/signup">
             <Button type="link" htmlType="button">
                 Sign Up
