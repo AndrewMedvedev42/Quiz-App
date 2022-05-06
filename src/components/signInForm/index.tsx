@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Form, Input, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
-import { SignUpWithSocialMedia } from './signInWithSocialMedia';
+import GoogleSignIn from "../../google";
 
 export const SignInForm = () => {
     const [form] = Form.useForm();
+    const [googleUserData, setGoogleUserData] = useState({
+        email: "",
+        name: ""
+    })
     return (
         <>
             <Form
@@ -49,7 +54,7 @@ export const SignInForm = () => {
                 </Button>
             </Form.Item>
         </Form>
-        <SignUpWithSocialMedia text="Sign In with Google" />
+        <GoogleSignIn text="Sign In with Google" setGoogleUserData={setGoogleUserData}/>
         <NavLink to="/signup">
             <Button type="link" htmlType="button">
                 Sign Up
