@@ -1,21 +1,29 @@
+import { useState } from "react";
 import { Form, Input, Button } from 'antd';
 import { NavLink } from 'react-router-dom';
 import GoogleSignIn from "../../google";
+import { signUpUser } from "../../modules";
 
 export const SignUpForm = () => {
     const [form] = Form.useForm();
+    const [googleUserData, setGoogleUserData] = useState({
+        email: "",
+        name: ""
+    })
     return (
         <>
             <Form
             form={form}
             name="user_register"
+            onFinish={signUpUser}
         >
             <Form.Item
-                name="firstname"
+                name="user_name"
                 label="Username"
                 rules={[{ required: true }]}
+                initialValue={googleUserData.name}
             >
-                <Input />
+                <Input/>
             </Form.Item>
             <Form.Item
                 name="email"
@@ -27,6 +35,7 @@ export const SignUpForm = () => {
                         message: 'The input is not valid email!',
                     },
                 ]}
+                initialValue={googleUserData.email}
             >
                 <Input />
             </Form.Item>
@@ -44,7 +53,6 @@ export const SignUpForm = () => {
                 <Input.Password />
             </Form.Item>
             <Form.Item
-                name="repeatpassword"
                 label='Repeat password'
                 rules={[
                     { required: true },
@@ -62,7 +70,7 @@ export const SignUpForm = () => {
                 </Button>
             </Form.Item>
         </Form>
-        <GoogleSignIn text="Sign Up with Google" />
+        <GoogleSignIn text="Sign Up with Google" setGoogleUserData={setGoogleUserData}/>
         <NavLink to="/signin">
             <Button type="link" htmlType="button">
                 Sign In

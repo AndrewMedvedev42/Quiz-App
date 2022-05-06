@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 
-const clientId = "";
+const clientId = `${process.env.REACT_APP_GOOGLE_CLIENT_ID}`;
 
 interface Props {
     text:string
+    setGoogleUserData:any
 }
 
-function GoogleSignIn({text}:Props) {
+function GoogleSignIn({text, setGoogleUserData}:Props) {
 
     const [showloginButton, setShowloginButton] = useState(true);
     const [showlogoutButton, setShowlogoutButton] = useState(false);
     const onLoginSuccess = (res:any) => {
-        console.log(res);
-        
+        const {name, email} = res.profileObj
+        setGoogleUserData({name, email})
     };
 
     const onLoginFailure = (res:any) => {
