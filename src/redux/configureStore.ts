@@ -11,10 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// import emailReducer from './reducers/email';
-// import loginReducer from './reducers/login';
-// import userRegister from './reducers/user.register';
-// import { authApi } from './api/authApi';
+import rootReducer from './rootReducer';
 
 const persistConfig = {
     key: 'store',
@@ -22,10 +19,7 @@ const persistConfig = {
 };
 
 const reducers = combineReducers({
-    // [authApi.reducerPath]: authApi.reducer,
-    // email: emailReducer,
-    // login: loginReducer,
-    // user_register: userRegister,
+    user: rootReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

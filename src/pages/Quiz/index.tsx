@@ -4,6 +4,9 @@ import axios from "axios";
 
 export const Quiz = ():JSX.Element => {
 
+	const [currentQuestion, setCurrentQuestion] = useState(0);
+	const [showScore, setShowScore] = useState(false);
+	const [score, setScore] = useState(0);
     const [quiz, setQuiz] = useState({questions:[
         {
             questionText:"",
@@ -18,10 +21,6 @@ export const Quiz = ():JSX.Element => {
             .catch((error)=>{console.log(error);
         })
     })
-
-	const [currentQuestion, setCurrentQuestion] = useState(0);
-	const [showScore, setShowScore] = useState(false);
-	const [score, setScore] = useState(0);
 
     const getPercentageScore = () => {
         return Math.floor((score/quiz.questions.length)*100)

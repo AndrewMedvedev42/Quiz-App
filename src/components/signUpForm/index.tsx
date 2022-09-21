@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Form, Input, Button } from 'antd';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import GoogleSignIn from "../../google";
-import { signUpUser } from "../../modules";
+import { onFinish } from "./signUpHooks";
 
 export const SignUpForm = () => {
     const [form] = Form.useForm();
+    const navigate = useNavigate()
     const [googleUserData, setGoogleUserData] = useState({
         email: "",
         name: ""
@@ -15,7 +16,7 @@ export const SignUpForm = () => {
             <Form
             form={form}
             name="user_register"
-            onFinish={signUpUser}
+            onFinish={(value)=>{onFinish(value, navigate)}}
         >
             <Form.Item
                 name="user_name"

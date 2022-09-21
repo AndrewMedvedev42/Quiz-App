@@ -1,1 +1,5 @@
-export const State = {}
+export const State = {
+    user:{
+        userId:"",
+    }
+}
